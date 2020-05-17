@@ -1,11 +1,12 @@
-package com.salesianostriana.dam.damkeepapi.services
+package com.salesianostriana.dam.damkeep.services
 
-import com.salesianostriana.dam.damkeepapi.entidades.CreateUserDTO
-import com.salesianostriana.dam.damkeepapi.entidades.User
-import com.salesianostriana.dam.damkeepapi.repos.UserRepository
+import com.salesianostriana.dam.damkeep.dtos.CreateUserDTO
+import com.salesianostriana.dam.damkeep.entities.User
+import com.salesianostriana.dam.damkeep.repositories.UserRepository
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import java.util.*
+import kotlin.collections.ArrayList
 
 @Service
 class UserService(
@@ -18,7 +19,7 @@ class UserService(
             return Optional.empty()
         return Optional.of(
                 with(newUser) {
-                    repo.save(User(username, encoder.encode(password), fullName, avatar))
+                    repo.save(User(username, fullname, encoder.encode(password), "USER", ArrayList()))
                 }
 
         )

@@ -1,9 +1,7 @@
-package com.salesianostriana.dam.damkeepapi.security
+package com.salesianostriana.dam.damkeep.security
 
-
-import com.salesianostriana.dam.tvseries.security.jwt.JwtAuthenticationEntryPoint
-import com.salesianostriana.dam.tvseries.security.jwt.JwtAuthorizationFilter
-import org.springframework.beans.factory.annotation.Qualifier
+import com.salesianostriana.dam.damkeep.security.jwt.JwtAuthenticationEntryPoint
+import com.salesianostriana.dam.damkeep.security.jwt.JwtAuthorizationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod.*
@@ -70,11 +68,9 @@ class WebSecurityConfiguration(
                 .and()
                 .authorizeRequests()
                 .antMatchers( "/h2-console/**").permitAll()
-                .antMatchers(POST, "/auth/login", "/user/").permitAll()
-                .antMatchers(GET, "/notas/**").hasRole("USER")
-                .antMatchers(POST, "/notas/**").hasRole("USER")
-                .antMatchers(PUT, "/notas/**").hasRole("USER")
-                .antMatchers(DELETE, "/notas/**").hasRole("USER")
+                .antMatchers("/auth/login").permitAll()
+                .antMatchers("user/signup").permitAll()
+                .antMatchers("/notas/**").hasRole("USER")
                 .anyRequest().hasRole("ADMIN")
 
         http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter::class.java)

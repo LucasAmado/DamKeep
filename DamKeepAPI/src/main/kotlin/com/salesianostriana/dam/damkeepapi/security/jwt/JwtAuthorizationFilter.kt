@@ -1,7 +1,7 @@
-package com.salesianostriana.dam.tvseries.security.jwt
+package com.salesianostriana.dam.damkeep.security.jwt
 
-import com.salesianostriana.dam.damkeepapi.entidades.User
-import com.salesianostriana.dam.damkeepapi.services.UserService
+import com.salesianostriana.dam.damkeep.entities.User
+import com.salesianostriana.dam.damkeep.services.UserService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

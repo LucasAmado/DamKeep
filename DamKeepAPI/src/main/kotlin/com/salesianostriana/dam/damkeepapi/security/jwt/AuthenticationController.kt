@@ -1,8 +1,9 @@
-package com.salesianostriana.dam.tvseries.security.jwt
+package com.salesianostriana.dam.damkeep.security.jwt
 
-import com.salesianostriana.dam.damkeepapi.entidades.Usuario
-import com.salesianostriana.dam.damkeepapi.entidades.UsuarioDto
-import com.salesianostriana.dam.damkeepapi.entidades.toUsuarioDto
+import com.salesianostriana.dam.damkeep.dtos.UserDTO
+import com.salesianostriana.dam.damkeep.dtos.toUserDTO
+import com.salesianostriana.dam.damkeep.entities.User
+
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -31,16 +32,16 @@ class AuthenticationController(
 
         SecurityContextHolder.getContext().authentication = authentication
 
-        val user = authentication.principal as Usuario
+        val user = authentication.principal as User
         val jwtToken = jwtTokenProvider.generateToken(authentication)
 
-        return JwtUserResponse(jwtToken, user.toUsuarioDto())
+        return JwtUserResponse(jwtToken, user.toUserDTO())
 
     }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/user/me")
-    fun me(@AuthenticationPrincipal user : Usuario) = user.toUsuarioDto()
+    fun me(@AuthenticationPrincipal user : User) = user.toUserDTO()
 
 
 
@@ -55,5 +56,5 @@ data class LoginRequest(
 
 data class JwtUserResponse(
         val token: String,
-        val user : UsuarioDto
-        )
+        val user : UserDTO
+)

@@ -1,6 +1,6 @@
-package com.salesianostriana.dam.tvseries.security.jwt
+package com.salesianostriana.dam.damkeep.security.jwt
 
-import com.salesianostriana.dam.damkeepapi.entidades.User
+import com.salesianostriana.dam.damkeep.entities.User
 import io.jsonwebtoken.*
 import io.jsonwebtoken.security.Keys
 import io.jsonwebtoken.security.SignatureException
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component
 import java.lang.Exception
 import java.lang.IllegalArgumentException
 import java.util.*
-
 
 @Component
 class JwtTokenProvider() {
@@ -38,7 +37,7 @@ class JwtTokenProvider() {
                 .setSubject(user.id.toString())
                 .setExpiration(tokenExpirationDate)
                 .setIssuedAt(Date())
-                .claim("fullname", user.fullName)
+                .claim("fullname", user.fullname)
                 .claim("roles", user.roles.joinToString())
                 .compact()
     }
