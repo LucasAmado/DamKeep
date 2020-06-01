@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.damkeepapi.security.jwt
+package com.salesianostriana.dam.damkeepapi.security
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.security.core.AuthenticationException
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse
 
 @Component
 class JwtAuthenticationEntryPoint(
-        val mapper : ObjectMapper
-)  : AuthenticationEntryPoint {
+        val mapper: ObjectMapper
+) : AuthenticationEntryPoint {
 
 
     override fun commence(request: HttpServletRequest?, response: HttpServletResponse?, authException: AuthenticationException?) {

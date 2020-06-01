@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.lucasamado.damkeepapp.R
 import com.lucasamado.damkeepapp.common.Constantes
 import com.lucasamado.damkeepapp.common.MyApp
@@ -21,8 +22,8 @@ class NotaDetalleActivity : AppCompatActivity() {
     lateinit var fecha_creacion: TextView
     lateinit var fecha_edicion: TextView
     lateinit var contenido: TextView
-    lateinit var edit: Button
-    lateinit var delete: Button
+    lateinit var edit: FloatingActionButton
+    lateinit var delete: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +44,7 @@ class NotaDetalleActivity : AppCompatActivity() {
         loadNota()
 
         edit.setOnClickListener {
-            val intent = Intent(MyApp.instance, EditarNotaActivity::class.java).apply {
+            val intent = Intent(this, EditarNotaActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 putExtra(Constantes.ID_NOTA, id_nota)
             }
@@ -52,7 +53,7 @@ class NotaDetalleActivity : AppCompatActivity() {
 
         delete.setOnClickListener {
             notaDetalleViewModel.borrarNota(id_nota)
-            val intent = Intent(MyApp.instance, ListaNotasActivity::class.java)
+            val intent = Intent(this, ListaNotasActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
 

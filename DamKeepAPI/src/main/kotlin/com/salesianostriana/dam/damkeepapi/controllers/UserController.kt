@@ -1,9 +1,9 @@
-package com.salesianostriana.dam.damkeep.controllers
+package com.salesianostriana.dam.damkeepapi.controllers
 
-import com.salesianostriana.dam.damkeep.dtos.CreateUserDTO
-import com.salesianostriana.dam.damkeep.dtos.UserDTO
-import com.salesianostriana.dam.damkeep.dtos.toUserDTO
-import com.salesianostriana.dam.damkeep.services.UserService
+import com.salesianostriana.dam.damkeepapi.dtos.CreateUserDTO
+import com.salesianostriana.dam.damkeepapi.dtos.UserDTO
+import com.salesianostriana.dam.damkeepapi.dtos.toUserDTO
+import com.salesianostriana.dam.damkeepapi.services.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping

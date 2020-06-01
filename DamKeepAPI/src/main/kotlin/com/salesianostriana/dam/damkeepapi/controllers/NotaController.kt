@@ -1,16 +1,15 @@
-package com.salesianostriana.dam.damkeep.controllers
+package com.salesianostriana.dam.damkeepapi.controllers
 
-import com.salesianostriana.dam.damkeep.dtos.*
-import com.salesianostriana.dam.damkeep.entities.Nota
-import com.salesianostriana.dam.damkeep.entities.User
-import com.salesianostriana.dam.damkeep.services.NotaService
+import com.salesianostriana.dam.damkeepapi.dtos.*
+import com.salesianostriana.dam.damkeepapi.entities.Nota
+import com.salesianostriana.dam.damkeepapi.entities.User
+import com.salesianostriana.dam.damkeepapi.services.NotaService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.util.*
 
 @RestController

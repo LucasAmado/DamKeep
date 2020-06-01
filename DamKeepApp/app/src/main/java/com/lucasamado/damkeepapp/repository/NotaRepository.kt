@@ -1,5 +1,6 @@
 package com.lucasamado.damkeepapp.repository
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.lucasamado.damkeepapp.common.MyApp

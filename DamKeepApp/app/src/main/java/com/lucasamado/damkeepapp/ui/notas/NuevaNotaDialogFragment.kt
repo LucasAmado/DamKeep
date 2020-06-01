@@ -38,8 +38,8 @@ class NuevaNotaDialogFragment: DialogFragment() {
         v = LayoutInflater.from(activity).inflate(R.layout.nueva_nota_dialog, null)
         builder?.setView(v)
 
-        titulo = v.findViewById(R.id.textViewTitulo)
-        contenido = v.findViewById(R.id.textViewContenido)
+        titulo = v.findViewById(R.id.editTextTitulo)
+        contenido = v.findViewById(R.id.editTextContenido)
         builder?.setPositiveButton(
             R.string.save,
             DialogInterface.OnClickListener { dialog, which ->

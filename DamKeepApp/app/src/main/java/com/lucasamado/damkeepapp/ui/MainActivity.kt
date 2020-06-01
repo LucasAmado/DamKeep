@@ -9,7 +9,9 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.lucasamado.damkeepapp.R
+import com.lucasamado.damkeepapp.common.Constantes
 import com.lucasamado.damkeepapp.common.MyApp
+import com.lucasamado.damkeepapp.common.SharedPreferencesManager
 import com.lucasamado.damkeepapp.models.LoginRequest
 import com.lucasamado.damkeepapp.ui.notas.lista.ListaNotasActivity
 import com.lucasamado.damkeepapp.viewModel.LoginViewModel
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 )
             ).observe(this, Observer {
                 if (it != null) {
+                    SharedPreferencesManager().setStringValue(Constantes.TOKEN, it.token)
                     val intent = Intent(MyApp.instance, ListaNotasActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     MyApp.instance.startActivity(intent)

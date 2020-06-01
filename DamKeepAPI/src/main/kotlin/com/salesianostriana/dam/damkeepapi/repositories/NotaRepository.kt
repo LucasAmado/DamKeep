@@ -1,9 +1,8 @@
-package com.salesianostriana.dam.damkeep.repositories
+package com.salesianostriana.dam.damkeepapi.repositories
 
-import com.salesianostriana.dam.damkeep.entities.Nota
-import com.salesianostriana.dam.damkeep.entities.User
+import com.salesianostriana.dam.damkeepapi.entities.Nota
+import com.salesianostriana.dam.damkeepapi.entities.User
 import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.data.jpa.repository.Query
 import java.util.*
 
 interface NotaRepository: JpaRepository<Nota,UUID> {

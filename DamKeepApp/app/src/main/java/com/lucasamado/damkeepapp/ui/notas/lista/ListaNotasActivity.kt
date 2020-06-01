@@ -5,6 +5,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.lucasamado.damkeepapp.R
+import com.lucasamado.damkeepapp.ui.notas.NuevaNotaDialogFragment
 
 import kotlinx.android.synthetic.main.activity_lista_notas.*
 

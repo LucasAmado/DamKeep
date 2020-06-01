@@ -1,9 +1,8 @@
 package com.salesianostriana.dam.damkeepapi.security
 
-import com.salesianostriana.dam.damkeepapi.security.jwt.JwtAuthenticationEntryPoint
-import com.salesianostriana.dam.damkeepapi.security.jwt.JwtAuthorizationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
@@ -19,10 +18,11 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
+@EnableJpaAuditing
 class ConfigurePasswordEncoder() {
 
     @Bean
-    fun passwordEncoder() : PasswordEncoder = BCryptPasswordEncoder()
+    fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 
 }
 
@@ -30,7 +30,7 @@ class ConfigurePasswordEncoder() {
 class ConfigureCors() {
 
     @Bean
-    fun corsConfigurer()  = object : WebMvcConfigurer {
+    fun corsConfigurer() = object : WebMvcConfigurer {
 
         override fun addCorsMappings(registry: CorsRegistry) {
             registry.addMapping("/**")
@@ -66,15 +66,16 @@ class WebSecurityConfiguration(
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers( "/h2-console/**").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/auth/login").permitAll()
-                .antMatchers("user/signup").permitAll()
-                .antMatchers("/notas/**").hasRole("USER")
+                .antMatchers("/user/signup").permitAll()
+                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/notas/**").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().hasRole("ADMIN")
 
         http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter::class.java)
 
-        // Para la consola de H2
         http.headers().frameOptions().disable()
 
         // @formatter:on

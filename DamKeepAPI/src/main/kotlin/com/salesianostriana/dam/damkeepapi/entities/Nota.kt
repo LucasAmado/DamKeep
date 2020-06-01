@@ -1,8 +1,7 @@
-package com.salesianostriana.dam.damkeep.entities
+package com.salesianostriana.dam.damkeepapi.entities
 
 import com.fasterxml.jackson.annotation.JsonBackReference
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

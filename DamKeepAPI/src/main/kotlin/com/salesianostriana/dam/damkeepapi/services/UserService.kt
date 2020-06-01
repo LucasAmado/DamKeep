@@ -1,8 +1,8 @@
-package com.salesianostriana.dam.damkeep.services
+package com.salesianostriana.dam.damkeepapi.services
 
-import com.salesianostriana.dam.damkeep.dtos.CreateUserDTO
-import com.salesianostriana.dam.damkeep.entities.User
-import com.salesianostriana.dam.damkeep.repositories.UserRepository
+import com.salesianostriana.dam.damkeepapi.dtos.CreateUserDTO
+import com.salesianostriana.dam.damkeepapi.entities.User
+import com.salesianostriana.dam.damkeepapi.repositories.UserRepository
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import java.util.*
@@ -28,5 +28,7 @@ class UserService(
     fun findByUsername(username : String) = repo.findByUsername(username)
 
     fun findById(id : UUID) = repo.findById(id)
+
+    fun save(user: User) = repo.save(user)
 
 }

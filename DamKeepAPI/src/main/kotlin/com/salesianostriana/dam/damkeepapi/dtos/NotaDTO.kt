@@ -1,10 +1,9 @@
-package com.salesianostriana.dam.damkeep.dtos
+package com.salesianostriana.dam.damkeepapi.dtos
 
 import com.fasterxml.jackson.annotation.JsonFormat
-import com.salesianostriana.dam.damkeep.entities.Nota
-import com.salesianostriana.dam.damkeep.entities.User
+import com.salesianostriana.dam.damkeepapi.entities.Nota
+import com.salesianostriana.dam.damkeepapi.entities.User
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.util.*
 
 data class NotaDTO(

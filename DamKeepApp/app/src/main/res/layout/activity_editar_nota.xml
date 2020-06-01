@@ -8,7 +8,7 @@
     tools:context=".ui.notas.detalle.EditarNotaActivity">
 
     <TextView
-        android:id="@+id/tv_editar"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -20,7 +20,7 @@
 
 
     <EditText
-        android:id="@+id/create_edit_title"
+        android:id="@+id/editTextTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -29,20 +29,20 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_editar" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/create_edit_content"
+        android:id="@+id/editTextContenido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Contenido"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/create_edit_title"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTitulo"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/create_edit_title"
-        app:layout_constraintTop_toBottomOf="@+id/create_edit_title" />
+        app:layout_constraintStart_toStartOf="@+id/editTextTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitulo" />
 
     <Button
         android:id="@+id/buttonSave"
@@ -50,8 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="GUARDAR CAMBIOS"
-        app:layout_constraintEnd_toEndOf="@+id/create_edit_content"
-        app:layout_constraintStart_toStartOf="@+id/create_edit_content"
-        app:layout_constraintTop_toBottomOf="@+id/create_edit_content" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextContenido"
+        app:layout_constraintStart_toStartOf="@+id/editTextContenido"
+        app:layout_constraintTop_toBottomOf="@+id/editTextContenido" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

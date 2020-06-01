@@ -1,8 +1,8 @@
-package com.salesianostriana.dam.damkeep.services
+package com.salesianostriana.dam.damkeepapi.services
 
-import com.salesianostriana.dam.damkeep.entities.Nota
-import com.salesianostriana.dam.damkeep.entities.User
-import com.salesianostriana.dam.damkeep.repositories.NotaRepository
+import com.salesianostriana.dam.damkeepapi.entities.Nota
+import com.salesianostriana.dam.damkeepapi.entities.User
+import com.salesianostriana.dam.damkeepapi.repositories.NotaRepository
 import org.springframework.stereotype.Service
 import java.util.*
 

@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.damkeep.entities
+package com.salesianostriana.dam.damkeepapi.entities
 
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import org.springframework.security.core.GrantedAuthority
@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import java.util.*
 import javax.persistence.*
-import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
 
 @Entity

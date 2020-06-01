@@ -1,7 +1,7 @@
-package com.salesianostriana.dam.damkeep.dtos
+package com.salesianostriana.dam.damkeepapi.dtos
 
-import com.salesianostriana.dam.damkeep.entities.Nota
-import com.salesianostriana.dam.damkeep.entities.User
+import com.salesianostriana.dam.damkeepapi.entities.Nota
+import com.salesianostriana.dam.damkeepapi.entities.User
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -19,6 +19,8 @@ fun User.toUserDTO() = UserDTO(username, fullname, roles.joinToString(), ArrayLi
 data class CreateUserDTO(
         var username: String,
         var fullname: String,
-        val password: String,
+        var password: String,
         val password2: String
 )
+
+fun CreateUserDTO.toUser() = User(username, fullname, password)

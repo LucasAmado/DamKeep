@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.damkeepapi.security.jwt
+package com.salesianostriana.dam.damkeepapi.security
 
 import com.salesianostriana.dam.damkeepapi.entities.User
 import com.salesianostriana.dam.damkeepapi.services.UserService
@@ -11,7 +11,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails
 import org.springframework.stereotype.Component
 import org.springframework.util.StringUtils
 import org.springframework.web.filter.OncePerRequestFilter
-import java.lang.Exception
 import java.util.*
 import javax.servlet.FilterChain
 import javax.servlet.http.HttpServletRequest
@@ -30,7 +29,7 @@ class JwtAuthorizationFilter(
             getJwtFromRequest(request).ifPresent { token ->
                 if (jwtTokenProvider.validateToken(token)) {
                     val userId = jwtTokenProvider.getUserIdFromJWT(token)
-                    val user : User = userService.findById(userId).orElseThrow {
+                    val user: User = userService.findById(userId).orElseThrow {
                         UsernameNotFoundException("No se ha podido encontrar el usuario a partir de su ID")
                     }
                     val authentication = UsernamePasswordAuthenticationToken(user, user.roles, user.authorities)
@@ -40,14 +39,14 @@ class JwtAuthorizationFilter(
                 }
             }
             filterChain.doFilter(request, response)
-        } catch (ex : Exception) {
+        } catch (ex: Exception) {
             log.info("No se ha podido establecer la autenticación del usuario en el contexto de seguridad")
             log.info(ex.message)
         }
 
     }
 
-    private fun getJwtFromRequest(request: HttpServletRequest) : Optional<String> {
+    private fun getJwtFromRequest(request: HttpServletRequest): Optional<String> {
         val bearerToken = request.getHeader(JwtTokenProvider.TOKEN_HEADER)
         return if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(JwtTokenProvider.TOKEN_PREFIX))
             Optional.of(bearerToken.substring(JwtTokenProvider.TOKEN_PREFIX.length, bearerToken.length)) else Optional.empty()

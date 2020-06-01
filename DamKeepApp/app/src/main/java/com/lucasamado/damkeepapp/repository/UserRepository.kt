@@ -19,10 +19,12 @@ class UserRepository {
     var userService: UserService
     var serviceGenerator: ServiceGenerator = ServiceGenerator()
     var user: MutableLiveData<User>
+    var userLogin: MutableLiveData<LoginResponse>
 
     init {
         userService = serviceGenerator.getUserService()
         user = MutableLiveData()
+        userLogin = MutableLiveData()
     }
 
     fun createUser(createUser: CreateUser): MutableLiveData<User>{
@@ -44,13 +46,13 @@ class UserRepository {
     }
 
 
-    fun doLogin(loginRequest: LoginRequest): MutableLiveData<User> {
+    fun doLogin(loginRequest: LoginRequest): MutableLiveData<LoginResponse> {
         val call: Call<LoginResponse> = userService.doLogin(loginRequest)
 
-        call?.enqueue(object : Callback<LoginResponse> {
+        call.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if(response.isSuccessful){
-                    user.value = response.body()?.user
+                    userLogin.value = response.body()
                 }else{
                     Toast.makeText(MyApp.instance, "Error al hacer el login", Toast.LENGTH_LONG).show()
                 }
@@ -61,6 +63,6 @@ class UserRepository {
             }
         })
 
-        return user
+        return userLogin
     }
 }

@@ -32,6 +32,10 @@ class EditarNotaActivity : AppCompatActivity() {
         notaViewModel = ViewModelProvider(this).get(NotaViewModel::class.java)
         notaDetalleViewModel = ViewModelProvider(this).get(NotaDetalleViewModel::class.java)
 
+        guardar = findViewById(R.id.buttonSave)
+        titulo = findViewById(R.id.editTextTitulo)
+        contenido = findViewById(R.id.editTextContenido)
+
         id_nota = intent.getStringExtra(Constantes.ID_NOTA)
 
         loadNota()

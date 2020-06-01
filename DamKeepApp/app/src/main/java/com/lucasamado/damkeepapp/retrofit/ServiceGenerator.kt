@@ -18,7 +18,7 @@ class ServiceGenerator {
 
         val okHttpClientBuilder = OkHttpClient.Builder()
 
-        val client = okHttpClientBuilder.addInterceptor(httpLoginInterceptor).build()
+        val client = okHttpClientBuilder.addInterceptor(httpLoginInterceptor).addInterceptor(DamKeepInterceptor()).build()
 
         retrofit = Retrofit.Builder()
             .baseUrl(Constantes.API_BASE_URL)
