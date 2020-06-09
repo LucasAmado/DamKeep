@@ -51,7 +51,6 @@ class AuthenticationController(
     @GetMapping("/user/me")
     fun me(@AuthenticationPrincipal user: User) = user.toUserDTO()
 
-    @PreAuthorize("isAuthenticated()")
     @PostMapping("/signup")
     fun signup(@RequestBody newUser: CreateUserDTO): UserDTO{
         val result = userService.findByUsername(newUser.username)

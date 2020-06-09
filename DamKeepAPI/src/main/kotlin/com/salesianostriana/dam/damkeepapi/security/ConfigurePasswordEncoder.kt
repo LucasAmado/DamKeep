@@ -3,6 +3,8 @@ package com.salesianostriana.dam.damkeepapi.security
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
+import org.springframework.http.HttpMethod.GET
+import org.springframework.http.HttpMethod.POST
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
@@ -68,7 +70,7 @@ class WebSecurityConfiguration(
                 .authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/auth/login").permitAll()
-                .antMatchers("/user/signup").permitAll()
+                .antMatchers("/signup").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/notas/**").authenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")
